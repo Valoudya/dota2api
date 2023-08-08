@@ -1,8 +1,9 @@
 import TeamCard from "./TeamCard.tsx";
-import {matchesInterface} from "../interfaces/heroesIntarface.ts";
+import {matchesInterface} from "../interfaces/Intarface.ts";
 
 const MatchInfo = (props: matchesInterface) => {
     const {matchData}: matchesInterface = props
+
     const time = matchData.duration,
         duration = {
             minutes: Math.floor(time/60).toString().padStart(2, '0'),
@@ -44,8 +45,8 @@ const MatchInfo = (props: matchesInterface) => {
                 </a>
             }
             <div className="teams w-full">
-                <TeamCard teamData={matchData.players.slice(0, 5)}/>
-                <TeamCard teamData={matchData.players.slice(5, 10)}/>
+                <TeamCard playerData={matchData.players.slice(0, 5)}/>
+                <TeamCard playerData={matchData.players.slice(5, 10)}/>
             </div>
         </div>
     );

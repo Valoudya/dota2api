@@ -1,11 +1,17 @@
 import HeroesCard from "../components/HeroesCard.tsx";
 import {useAxiosGet} from "../hooks/axiosGet.tsx";
 import {useHeroesFilter} from "../hooks/heroesFilter.tsx";
+import {useState} from "react";
 
 const Heroes = () => {
 
-    const { axiosData, loaded } = useAxiosGet('https://api.opendota.com/api/heroStats')
+    const link = 'https://api.opendota.com/api/heroStats'
+    const { axiosData, loaded, setAxiosData, axiosStableState } = useAxiosGet(link)
     const { filtersArray } = useHeroesFilter()
+    const [filterActive, setFilterActive] = useState('all')
+    const filterHeroes = (filterType) => {
+        setAxiosData(axiosStableState.filter(filterType))
+    }
 
     return (
             <div className="content w-screen flex justify-center">
@@ -14,7 +20,13 @@ const Heroes = () => {
                         <h2 className='text-[42px]'>Heroes</h2>
                         <div className="heroes__panel__filter space-x-3">
                             {filtersArray.map((filter, key ) =>
-                                <button className="px-3 py-1 bg-[#d0d0d0] text-[#131313] rounded-full" key={key}>{
+                                <button className={`px-3 py-1 text-[#131313] rounded-full ${filterActive == filter.name ? 'bg-amber-400' : 'bg-[#d0d0d0]'}`}
+                                        key={key}
+                                        onClick={() => {
+                                            filterHeroes(filter.filterType)
+                                            setFilterActive(filter.name)
+                                        }}
+                                >{
                                     filter.name}
                                 </button>)}
                         </div>
@@ -25,7 +37,7 @@ const Heroes = () => {
                     lg:grid-cols-4
                     md:grid-cols-3
                     sm:grid-cols-2">
-                        {loaded ? axiosData.map(hero => <HeroesCard heroData={hero} key={hero.id}/>) : 'Loading'}
+                        {loaded ? axiosData.map((hero, key) => <HeroesCard heroData={hero} key={key}/>) : 'Loading'}
                     </div>
                 </div>
             </div>

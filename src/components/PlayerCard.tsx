@@ -1,28 +1,13 @@
-import {useAxiosGet} from "../hooks/axiosGet.tsx";
-import {useEffect} from "react";
+import {playerListInterface} from "../interfaces/Intarface.ts";
 
-const PlayerCard = (props) => {
-
-    let link
-    const {axiosData, loaded, getAxiosData} = useAxiosGet(link)
-
-    const getPlayerData = () => {
-        link = `https://api.opendota.com/api/players/${props.playerData.account_id}`
-        getAxiosData()
-    }
-
-    useEffect(() => {
-        props.playerData.account_id && getPlayerData()
-    }, [])
+const PlayerCard = (props: playerListInterface) => {
+    const {playerData}:playerListInterface = props
+    const url = `https://api.opendota.com/api/players/${playerData.account_id}`
 
     return (
-        <div className="player-info grid grid-cols-5">
-            <div className="player-name">{loaded && axiosData.profile.personaname}</div>
-            <div className="player-lvl"></div>
-            <div className="player-kill"></div>
-            <div className="player-death"></div>
-            <div className="player-asistance"></div>
-        </div>
+        <>
+
+        </>
     );
 };
 

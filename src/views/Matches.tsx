@@ -41,8 +41,8 @@ const Matches = () => {
                             onClick={() => setIsProMatches(false)}>Public Matches
                     </button>
                 </div>
-                {loaded && isProMatches ? axiosData.map(match => <MatchCardPro matchData={match} key={match.id}/>) : ''}
-                {loaded && !isProMatches ? axiosData.map(match => <MatchCardPublic matchData={match} key={match.id}/>) : ''}
+                {loaded && isProMatches ? axiosData.map((match, key) => <MatchCardPro matchData={match} key={key}/>) : ''}
+                {loaded && !isProMatches ? axiosData.map((match, key) => <MatchCardPublic matchData={match} key={key}/>) : ''}
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {matchesInterface} from "../interfaces/heroesIntarface.ts";
+import {matchesInterface} from "../interfaces/Intarface.ts";
 
 const MatchCardPro = (props: matchesInterface) => {
 

@@ -5,7 +5,7 @@ export function useAxiosGet(url: string) {
 
     const [axiosData, setAxiosData] = useState([])
     const [loaded, setLoaded] = useState(false)
-
+    const [axiosStableState, setAxiosStableState] = useState()
     const getAxiosData = () => {
         setLoaded(false)
         axios({
@@ -14,6 +14,7 @@ export function useAxiosGet(url: string) {
         }).then(response => {
                 setAxiosData(response.data)
                 setLoaded(true)
+                setAxiosStableState(response.data)
         }).catch(error => {
             console.log(error)
         })
@@ -23,5 +24,5 @@ export function useAxiosGet(url: string) {
         getAxiosData()
     }, [])
 
-    return {axiosData, loaded, getAxiosData}
+    return {axiosData, loaded, getAxiosData, setAxiosData, axiosStableState}
 }

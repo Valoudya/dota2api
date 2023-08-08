@@ -1,9 +1,28 @@
-import PlayerCard from "./PlayerCard.tsx";
+import {matchesInterface} from "../interfaces/Intarface.ts";
+import {useAxiosGet} from "../hooks/axiosGet.tsx";
+import {useEffect} from "react";
 
-const TeamCard = (props) => {
+let playersInfo = []
+const TeamCard = (props: matchesInterface) => {
+
+    const link = 'https://api.opendota.com/api/heroStats'
+    const {axiosData, loaded} = useAxiosGet(link)
+    const {playerData} = props
+    useEffect(() => {
+        playersInfo = playerData.reduce((result, player) => {
+            return [
+                {
+                    ...result,
+                    id: player.account_id,
+                    personaname: player.personaname
+                }
+            ];
+        }, 0)
+    }, [loaded])
+
     return (
         <div className='team-info w-full'>
-            {props.teamData.map(player => <PlayerCard playerData={player}/>)}
+            {loaded ? playersInfo.map(player => player.personaname) : 'Okay'}
         </div>
     );
 };
