@@ -44,10 +44,7 @@ const MatchInfo = (props: matchesInterface) => {
                     <img src="../../public/download.png" alt="" className="w-[20px] ml-2"/>
                 </a>
             }
-            <div className="teams w-full">
-                <TeamCard playerData={matchData.players.slice(0, 5)}/>
-                <TeamCard playerData={matchData.players.slice(5, 10)}/>
-            </div>
+                <TeamCard playerData={matchData.players}/>
         </div>
     );
 };

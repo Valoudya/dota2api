@@ -1,6 +1,6 @@
 export interface heroesInterface {
     heroData: {
-        id: undefined;
+        id?: number;
         name?: string;
         localized_name?: string;
         primary_attr?: string;
@@ -22,6 +22,13 @@ export interface heroesInterface {
         str_gain? : number;
         agi_gain? : number;
         int_gain? : number;
+        attack_range? : number;
+        attack_rate? : number;
+        projectile_speed? : number;
+        move_speed? : number;
+        turn_rate? : number;
+        legs? : number;
+        cm_enabled? : number;
     }
 }
 
