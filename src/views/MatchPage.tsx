@@ -1,6 +1,8 @@
 import {useAxiosGet} from "../hooks/axiosGet.tsx";
 import {useEffect} from "react";
 import MatchInfo from "../components/MatchInfo.tsx";
+import Loading from "../components/Loading.tsx";
+import TeamCard from "../components/TeamCard.tsx";
 
 const MatchPage = () => {
 
@@ -12,12 +14,13 @@ const MatchPage = () => {
     }, [])
 
     return (
-        <div className="content w-screen flex justify-center flex-col items-center">
+        <div className="content w-screen flex flex-col items-center">
             {loaded ?
                 <div className="view matches flex flex-col space-y-2 w-[1600px] max-w-[90%] mt-5">
                     <h2 className='text-[42px]'>Match: {axiosData.match_id}</h2>
                     <MatchInfo matchData={axiosData}/>
-                </div> : 'Loading'}
+                    <TeamCard playerData={axiosData.players}/>
+                </div> : <Loading/>}
         </div>
     );
 };

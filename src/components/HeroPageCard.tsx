@@ -6,7 +6,8 @@ const HeroPageCard = (props: heroesInterface) => {
 
     return (
         <div className="hero-card">
-            <div className="hero-info flex">
+            <div className="hero-info flex flex-col
+                            sm:flex-row">
                 <img src={`https://api.opendota.com${heroData.img}`} alt=""
                      className="rounded-[10px] w-[260px] h-[140px]"/>
                 <div className="hero-main-stats ml-3 flex flex-col justify-center">

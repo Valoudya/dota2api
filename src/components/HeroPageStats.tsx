@@ -4,7 +4,10 @@ const HeroPageStats = (props: heroesInterface) => {
     const {heroData} = props
 
     return (
-        <div className="hero-stats grid grid-cols-4 mt-5 gap-x-2 gap-y-2">
+        <div className="hero-stats grid grid-cols-1 mt-5 gap-x-2 gap-y-2
+                        sm:grid-cols-2
+                        md:grid-cols-3
+                        lg:grid-cols-4">
             <div className="hero-stats__column w-full">
                 <div className="hero-stats__column__raw flex justify-between p-2 bg-[#202020]">
                     <span>Base attack:</span>

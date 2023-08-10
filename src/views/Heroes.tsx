@@ -2,6 +2,7 @@ import HeroesCard from "../components/HeroesCard.tsx";
 import {useAxiosGet} from "../hooks/axiosGet.tsx";
 import {useHeroesFilter} from "../hooks/heroesFilter.tsx";
 import {useState} from "react";
+import Loading from "../components/Loading.tsx";
 
 const Heroes = () => {
 
@@ -14,13 +15,14 @@ const Heroes = () => {
     }
 
     return (
-            <div className="content w-screen flex justify-center">
+            <div className="content w-screen flex justify-center min-h-[100vh]">
                 <div className="view heroes flex flex-col w-[1600px] max-w-[90%]">
                     <div className="heroes__panel mt-5">
                         <h2 className='text-[42px]'>Heroes</h2>
-                        <div className="heroes__panel__filter space-x-3">
+                        <div className="heroes__panel__filter grid grid-cols-2
+                                        sm:space-x-3 sm:flex">
                             {filtersArray.map((filter, key ) =>
-                                <button className={`px-3 py-1 text-[#131313] rounded-full ${filterActive == filter.name ? 'bg-amber-400' : 'bg-[#d0d0d0]'}`}
+                                <button className={`px-3 py-1 text-[#d0d0d0] ${filterActive == filter.name ? 'border-b-2' : ''}`}
                                         key={key}
                                         onClick={() => {
                                             filterHeroes(filter.filterType)
@@ -37,7 +39,7 @@ const Heroes = () => {
                     lg:grid-cols-4
                     md:grid-cols-3
                     sm:grid-cols-2">
-                        {loaded ? axiosData.map((hero, key) => <HeroesCard heroData={hero} key={key}/>) : 'Loading'}
+                        {loaded ? axiosData.map((hero, key) => <HeroesCard heroData={hero} key={key}/>) : <Loading/>}
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import HeroPageCard from "../components/HeroPageCard.tsx";
 import NextPrevHero from "../components/NextPrevHero.tsx";
 import {useState} from "react";
 import HeroPageStats from "../components/HeroPageStats.tsx";
+import Loading from "../components/Loading.tsx";
 
 let heroId
 const HeroPage = () => {
@@ -32,7 +33,7 @@ const HeroPage = () => {
     return (
         <div className="content w-screen flex justify-center">
             <div className="hero view flex w-[1600px] max-w-[90%] mt-5 flex-col">
-                {loaded ? <HeroPageCard heroData={(axiosData.find(item => item.id == currentPage))}/> : 'Loading'}
+                {loaded ? <HeroPageCard heroData={(axiosData.find(item => item.id == currentPage))}/> : <Loading/>}
                 {loaded ? <HeroPageStats heroData={(axiosData.find(item => item.id == currentPage))}/> : ''}
                 {loaded ? <NextPrevHero heroesData={axiosData}
                                         heroId={heroId}

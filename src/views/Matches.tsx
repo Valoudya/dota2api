@@ -3,6 +3,7 @@ import {useAxiosGet} from "../hooks/axiosGet.tsx";
 import MatchCardPro from "../components/MatchCardPro.tsx";
 import MatchCardPublic from "../components/MatchCardPublic.tsx";
 import {Link} from "react-router-dom";
+import Loading from "../components/Loading.tsx";
 
 const Matches = () => {
 
@@ -18,7 +19,7 @@ const Matches = () => {
     }, [isProMatches])
 
     return (
-        <div className="content w-screen flex justify-center flex-col items-center">
+        <div className="content w-screen flex items-center flex-col min-h-[100vh]">
             <div className="view matches flex flex-col w-[1600px] space-y-2 max-w-[90%] mt-5">
                 <h2 className='text-[42px]'>Matches</h2>
                 <div className="search-match-container flex">
@@ -41,6 +42,7 @@ const Matches = () => {
                             onClick={() => setIsProMatches(false)}>Public Matches
                     </button>
                 </div>
+                {loaded ? '' : <Loading/>}
                 {loaded && isProMatches ? axiosData.map((match, key) => <MatchCardPro matchData={match} key={key}/>) : ''}
                 {loaded && !isProMatches ? axiosData.map((match, key) => <MatchCardPublic matchData={match} key={key}/>) : ''}
             </div>
