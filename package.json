@@ -1,7 +1,7 @@
 {
   "name": "dota2-ts",
   "private": true,
-  "homepage": "https://Valoudya.github.io/dota2api",
+  "homepage": "https://valoudya.github.io/dota2api",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
