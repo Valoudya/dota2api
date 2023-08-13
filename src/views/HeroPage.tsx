@@ -12,7 +12,7 @@ const HeroPage = () => {
     const { axiosData, loaded } = useAxiosGet(link)
     const [currentPage, setCurrentPage] = useState(heroId)
 
-    const pageChanger = (newHeroId) => {
+    const pageChanger = (newHeroId:number) => {
         setCurrentPage(newHeroId)
     }
 

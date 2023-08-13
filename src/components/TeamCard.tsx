@@ -1,13 +1,13 @@
-import {matchesInterface} from "../interfaces/Intarface.ts";
+import {playerDataInterface} from "../interfaces/Intarface.ts";
 import {useAxiosGet} from "../hooks/axiosGet.tsx";
 import Loading from "./Loading.tsx";
 import TeamCardInfo from "./TeamCardInfo.tsx";
 
-const TeamCard = (props: matchesInterface) => {
+const TeamCard = (props: playerDataInterface) => {
 
     const link = 'https://api.opendota.com/api/heroStats'
     const {axiosData, loaded} = useAxiosGet(link)
-    const {playerData} = props
+    const {playerData}: playerDataInterface = props
 
     return (
         <div className="team-info w-full grid-cols-1 grid mt-5

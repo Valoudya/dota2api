@@ -17,6 +17,7 @@ export function useAxiosGet(url: string) {
                 setAxiosStableState(response.data)
         }).catch(error => {
             console.log(error)
+            setLoaded(false)
         })
     }
 

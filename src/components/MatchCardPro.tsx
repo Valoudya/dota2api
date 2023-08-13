@@ -5,7 +5,7 @@ const MatchCardPro = (props: matchesInterface) => {
 
     const {matchData}: matchesInterface = props
 
-    const time:number = props.matchData.duration,
+    const time:number = props.matchData.duration ?? 0,
         duration = {
             minutes: Math.floor(time / 60).toString().padStart(2, '0'),
             seconds: (time % 60).toString().padStart(2, '0')
@@ -16,7 +16,7 @@ const MatchCardPro = (props: matchesInterface) => {
                         sm:grid sm:grid-cols-3">
             <div className="match-card__info flex flex-col items-center
                             sm:items-start">
-                <Link to={`/matches/match?id=${matchData.match_id}`}
+                <Link to={`/matches/match?id=${matchData.match_id ?? ''}`}
                       className='text-blue-200'>{matchData.match_id}</Link>
                 <span className="block">{matchData.league_name}</span>
             </div>

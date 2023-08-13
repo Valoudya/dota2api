@@ -69,7 +69,7 @@ const HeroPageStats = (props: heroesInterface) => {
                 </div>
                 <div className="hero-stats__column__raw flex justify-between p-2 bg-[#303030]">
                     <span>CM enabled:</span>
-                    {heroData.cm_enabled.toString()}
+                    {heroData.cm_enabled?.toString()}
                 </div>
             </div>
         </div>

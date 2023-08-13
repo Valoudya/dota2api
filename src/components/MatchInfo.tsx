@@ -3,7 +3,7 @@ import {matchesInterface} from "../interfaces/Intarface.ts";
 const MatchInfo = (props: matchesInterface) => {
     const {matchData}: matchesInterface = props
 
-    const time = matchData.duration,
+    const time = matchData.duration ?? 0,
         duration = {
             minutes: Math.floor(time/60).toString().padStart(2, '0'),
             seconds: (time % 60).toString().padStart(2, '0')
@@ -16,7 +16,7 @@ const MatchInfo = (props: matchesInterface) => {
                 <div className="radiant-team text-center">
                     <p className="text-[32px] text-[#66bb6a]">
                         {matchData.radiant_win && '👑'}
-                        {matchData.hasOwnProperty('radiant_team') ? matchData.radiant_team.name : 'Radiant'}
+                        {matchData.hasOwnProperty('radiant_team') ? matchData.radiant_team?.name : 'Radiant'}
                     </p>
                 </div>
                 <div className="teams-score flex justify-center text-[32px] flex-col items-center">
@@ -32,7 +32,7 @@ const MatchInfo = (props: matchesInterface) => {
                 <div className="dire-team text-center">
                     <p className="text-[32px] text-[#bb6666]">
                         {!matchData.radiant_win && '👑'}
-                        {matchData.hasOwnProperty('dire_team') ? matchData.dire_team.name : 'Dire'}
+                        {matchData.hasOwnProperty('dire_team') ? matchData.dire_team?.name : 'Dire'}
                     </p>
                 </div>
             </div>

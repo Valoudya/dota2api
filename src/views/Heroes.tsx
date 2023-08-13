@@ -10,7 +10,7 @@ const Heroes = () => {
     const { axiosData, loaded, setAxiosData, axiosStableState } = useAxiosGet(link)
     const { filtersArray } = useHeroesFilter()
     const [filterActive, setFilterActive] = useState('all')
-    const filterHeroes = (filterType) => {
+    const filterHeroes = (filterType: string) => {
         setAxiosData(axiosStableState.filter(filterType))
     }
 

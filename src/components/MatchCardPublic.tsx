@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import {Link} from "react-router-dom";
 import {matchesInterface} from "../interfaces/Intarface.ts";
 
@@ -6,9 +5,7 @@ const MatchCardPublic = (props: matchesInterface) => {
 
     const {matchData}: matchesInterface = props
 
-    const radiantTeam:string = useState(matchData.radiant_team)
-
-    const time:number = matchData.duration,
+    const time:number = matchData.duration ?? 0,
         duration = {
             minutes: Math.floor(time/60).toString().padStart(2, '0'),
             seconds: (time % 60).toString().padStart(2, '0')
@@ -19,7 +16,7 @@ const MatchCardPublic = (props: matchesInterface) => {
                         sm:grid sm:grid-cols-3">
             <div className="match-card__info flex flex-col items-center
                             sm:items-start">
-                <Link to={`/matches/match/?id=${matchData.match_id}`}
+                <Link to={`/matches/match/?id=${matchData.match_id ?? ''}`}
                       className='text-blue-200'>{matchData.match_id}</Link>
             </div>
             <div className="match-card__duration flex items-center justify-center my-2">
@@ -29,7 +26,7 @@ const MatchCardPublic = (props: matchesInterface) => {
                             md:grid md:grid-cols-2">
                 <div className="match-card__teams__team radiant w-[100%] text-center
                                 md:text-start">
-                    <p className="text-[#66bb6a]">{matchData.radiant_win ? '👑 ' : ''}{radiantTeam}</p>
+                    <p className="text-[#66bb6a]">{matchData.radiant_win ? '👑 ' : ''}{matchData.radiant_team}</p>
                 </div>
                 <div className="match-card__teams__team dire w-[100%] text-center
                                 md:text-end">
