@@ -7,6 +7,7 @@ import Loading from "../components/Loading.tsx";
 
 let heroId
 const HeroPage = () => {
+    // @ts-ignore
     heroId = Object.fromEntries(new URL(document.location).searchParams).id
     const link = `https://api.opendota.com/api/heroStats`
     const { axiosData, loaded } = useAxiosGet(link)
@@ -17,16 +18,20 @@ const HeroPage = () => {
     }
 
     const getPrevHeroId = () => {
+        // @ts-ignore
         if (((axiosData.indexOf(axiosData.find(item => item.id == currentPage))) - 1 < 0)) {
             return axiosData.length - 1
         }
+        // @ts-ignore
         return (axiosData.indexOf(axiosData.find(item => item.id == currentPage))) - 1
     }
 
     const getNextHeroId = () => {
+        // @ts-ignore
         if (((axiosData.indexOf(axiosData.find(item => item.id == currentPage))) + 1 >= axiosData.length)) {
             return 0
         }
+        // @ts-ignore
         return (axiosData.indexOf(axiosData.find(item => item.id == currentPage))) + 1
     }
 

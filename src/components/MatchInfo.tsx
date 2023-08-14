@@ -16,6 +16,7 @@ const MatchInfo = (props: matchesInterface) => {
                 <div className="radiant-team text-center">
                     <p className="text-[32px] text-[#66bb6a]">
                         {matchData.radiant_win && '👑'}
+                        {/* eslint-disable-next-line no-prototype-builtins */}
                         {matchData.hasOwnProperty('radiant_team') ? matchData.radiant_team?.name : 'Radiant'}
                     </p>
                 </div>
@@ -32,6 +33,7 @@ const MatchInfo = (props: matchesInterface) => {
                 <div className="dire-team text-center">
                     <p className="text-[32px] text-[#bb6666]">
                         {!matchData.radiant_win && '👑'}
+                        {/* eslint-disable-next-line no-prototype-builtins */}
                         {matchData.hasOwnProperty('dire_team') ? matchData.dire_team?.name : 'Dire'}
                     </p>
                 </div>

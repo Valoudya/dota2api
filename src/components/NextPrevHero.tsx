@@ -1,7 +1,15 @@
-import {heroesInterface} from "../interfaces/Intarface.ts";
 import {Link} from "react-router-dom";
+import {heroesInterface} from "../interfaces/Intarface.ts";
 
-const NextPrevHero = (props: heroesInterface) => {
+export interface NextPrevInterface {
+    props: any;
+    prevHeroId: number;
+    heroesData: heroesInterface;
+    pageChanger: (number);
+    nextHeroId: number;
+}
+
+const NextPrevHero = (props: NextPrevInterface) => {
     const {prevHeroId, heroesData, pageChanger, nextHeroId} = props
     return (
         <div className="nav-menu flex flex-col mt-5 space-y-2

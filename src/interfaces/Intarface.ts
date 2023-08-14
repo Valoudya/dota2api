@@ -36,15 +36,15 @@ export interface matchesInterface {
     matchData: {
         match_id?: number;
         league_name?: string;
-        radiant_team?: string | {
-            name?: string | undefined;
-        }
+        radiant_team?: {
+            name: string
+        };
         radiant_win?: string;
         radiant_name?: string;
         radiant_score?: number;
-        dire_team?: string | {
-            name?: string | undefined;
-        }
+        dire_team?: {
+            name: string
+        };
         dire_name?: string;
         dire_score?: number;
         dire_team_id?: number | undefined;
