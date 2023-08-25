@@ -1,9 +1,23 @@
 import {Link} from "react-router-dom";
+import {useTypedSelector} from "../hooks/useTypedSelector.ts";
+import Loading from "./Loading.tsx";
+import {PlayersListType} from "../type/Intarface.ts";
 
-const TeamCardInfo = (props) => {
+const TeamCardInfo = (props: PlayersListType) => {
+    const {heroes, loading, error} = useTypedSelector(state => state.heroes)
+    const {playersData}: PlayersListType = props
 
-    const {players} = props
-    const {heroesData} = props
+    if (loading) {
+        return <div className="content w-screen flex justify-center min-h-[100vh]">
+            <div className="view heroes flex flex-col w-[1600px] max-w-[90%]">
+                <Loading/>
+            </div>
+        </div>
+    }
+
+    if (error) {
+        return <h2>Sorry, can`t load information</h2>
+    }
 
     return (
         <>
@@ -25,13 +39,14 @@ const TeamCardInfo = (props) => {
                 </div>
             </div>
             {
-                players.map(player =>
+                playersData.map((player, key) =>
                     <div className="player-container p-2 grid grid-rows-3 border-2 border-[#202020] space-y-3
-                                    md:space-y-0 md:grid-cols-3 md:grid-rows-1">
+                                    md:space-y-0 md:grid-cols-3 md:grid-rows-1"
+                        key={key}>
                         <div className="player-hero flex flex-col items-center
                                         md:flex-row md:align-middle">
                             <img
-                                src={`https://api.opendota.com${heroesData.find(item => item.id == player.hero_id).icon}`}
+                                src={`https://api.opendota.com${heroes.find(item => item.id == player.hero_id).icon}`}
                                 alt=""
                                 className="w-[32px] h-[32px]"
                             />

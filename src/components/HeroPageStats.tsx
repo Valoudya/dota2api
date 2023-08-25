@@ -1,7 +1,11 @@
-import {heroesInterface} from "../interfaces/Intarface.ts";
+import {HeroDataType} from "../type/Intarface.ts";
 
-const HeroPageStats = (props: heroesInterface) => {
+const HeroPageStats = (props: HeroDataType) => {
     const {heroData} = props
+
+    if (!heroData) {
+        return <></>
+    }
 
     return (
         <div className="hero-stats grid grid-cols-1 mt-5 gap-x-2 gap-y-2

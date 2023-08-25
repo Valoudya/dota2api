@@ -1,48 +1,55 @@
 import HeroesCard from "../components/HeroesCard.tsx";
-import {useAxiosGet} from "../hooks/axiosGet.tsx";
-import {useHeroesFilter} from "../hooks/heroesFilter.tsx";
 import {useState} from "react";
 import Loading from "../components/Loading.tsx";
+import {useTypedSelector} from "../hooks/useTypedSelector.ts";
+import {heroesFilter} from "../utilits/heroesFilter.tsx";
 
 const Heroes = () => {
+    const {heroes, loading, error} = useTypedSelector(state => state.heroes)
+    const [activeFilter, setActiveFilter] = useState('all')
+    const {filtersArray, chooseActiveFilter} = heroesFilter()
 
-    const link = 'https://api.opendota.com/api/heroStats'
-    const { axiosData, loaded, setAxiosData, axiosStableState } = useAxiosGet(link)
-    const { filtersArray } = useHeroesFilter()
-    const [filterActive, setFilterActive] = useState('all')
-    const filterHeroes = (filterType: string) => {
-        setAxiosData(axiosStableState.filter(filterType))
+    const filteredHeroes = (filterType: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        return heroes.filter(chooseActiveFilter(filtersArray, filterType))
+    }
+
+    if (loading) {
+        return <div className="content w-screen flex justify-center min-h-[100vh]">
+            <div className="view heroes flex flex-col w-[1600px] max-w-[90%]">
+                <Loading/>
+            </div>
+        </div>
+    }
+
+    if (error) {
+        return <h2>Sorry, can`t load information</h2>
     }
 
     return (
-            <div className="content w-screen flex justify-center min-h-[100vh]">
-                <div className="view heroes flex flex-col w-[1600px] max-w-[90%]">
-                    <div className="heroes__panel mt-5">
-                        <h2 className='text-[42px]'>Heroes</h2>
-                        <div className="heroes__panel__filter grid grid-cols-2
+        <div className="content w-screen flex justify-center min-h-[100vh]">
+            <div className="view heroes flex flex-col w-[1600px] max-w-[90%]">
+                <div className="heroes__panel mt-5">
+                    <h2 className='text-[42px]'>Heroes</h2>
+                    <div className="heroes__panel__filter grid grid-cols-2
                                         sm:space-x-3 sm:flex">
-                            {filtersArray.map((filter, key ) =>
-                                <button className={`px-3 py-1 text-[#d0d0d0] ${filterActive == filter.name ? 'border-b-2' : ''}`}
-                                        key={key}
-                                        onClick={() => {
-                                            filterHeroes(filter.filterType)
-                                            setFilterActive(filter.name)
-                                        }}
-                                >{
-                                    filter.name}
-                                </button>)}
-                        </div>
+                        {filtersArray.map((button, key) =>
+                            <button onClick={() => setActiveFilter(button.name)}
+                                    className={`${activeFilter == button.name ? 'border-b-[1px]' : ''} p-1`}
+                                    key={key}>{button.name}</button>
+                        )}
                     </div>
-                    <div className="heroes__wrapper mt-5 grid grid-cols-2 gap-x-2 gap-y-2 max-w-[100%]
+                </div>
+                <div className="heroes__wrapper mt-5 grid grid-cols-2 gap-x-2 gap-y-2 max-w-[100%]
                     2xl:grid-cols-6
                     xl:grid-cols-5
                     lg:grid-cols-4
                     md:grid-cols-3
                     sm:grid-cols-2">
-                        {loaded ? axiosData.map((hero, key) => <HeroesCard heroData={hero} key={key}/>) : <Loading/>}
-                    </div>
+                    {filteredHeroes(activeFilter).map((hero, key) => <HeroesCard heroData={hero} key={key}/>)}
                 </div>
             </div>
+        </div>
     );
 };
 

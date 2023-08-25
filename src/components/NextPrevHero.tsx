@@ -1,21 +1,26 @@
 import {Link} from "react-router-dom";
-import {heroesInterface} from "../interfaces/Intarface.ts";
+import {heroesInterface} from "../type/Intarface.ts";
 
 export interface NextPrevInterface {
     props: any;
     prevHeroId: number;
-    heroesData: heroesInterface;
-    pageChanger: (number);
+    heroesData: heroesInterface[];
+    pageChanger: () => any;
     nextHeroId: number;
 }
 
 const NextPrevHero = (props: NextPrevInterface) => {
     const {prevHeroId, heroesData, pageChanger, nextHeroId} = props
+
+    if (!heroesData || prevHeroId < 0 || nextHeroId > heroesData.length) {
+        return <></>
+    }
+
     return (
         <div className="nav-menu flex flex-col mt-5 space-y-2
                         sm:flex-row sm:space-y-0 sm:justify-between">
             <Link to={`/heroes/hero?id=${heroesData[prevHeroId].id}`}
-                  onClick={() => { pageChanger(heroesData[prevHeroId].id)}}
+                  onClick={() => {pageChanger(heroesData[prevHeroId].id)}}
                   className="px-2 py-1 border-[#202020] border-[1px] w-full flex space-x-2
                             sm:w-[260px]"
             >

@@ -1,4 +1,4 @@
-import {playerListInterface} from "../interfaces/Intarface.ts";
+import {playerListInterface} from "../type/Intarface.ts";
 
 const PlayerCard = (props: playerListInterface) => {
     const {playerData}:playerListInterface = props

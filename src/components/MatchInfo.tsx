@@ -1,7 +1,8 @@
-import {matchesInterface} from "../interfaces/Intarface.ts";
+import {MatchesDataType} from "../type/Intarface.ts";
 
-const MatchInfo = (props: matchesInterface) => {
-    const {matchData}: matchesInterface = props
+const MatchInfo = (props: MatchesDataType) => {
+
+    const {matchData} = props
 
     const time = matchData.duration ?? 0,
         duration = {

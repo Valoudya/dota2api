@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
-import {matchesInterface} from "../interfaces/Intarface.ts";
+import {MatchesDataType} from "../type/Intarface.ts";
 
-const MatchCardPro = (props: matchesInterface) => {
+const MatchCardPro = (props: MatchesDataType) => {
 
-    const {matchData}: matchesInterface = props
+    const {matchData} = props
 
     const time:number = props.matchData.duration ?? 0,
         duration = {

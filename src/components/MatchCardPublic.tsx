@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
-import {matchesInterface} from "../interfaces/Intarface.ts";
+import {MatchesDataType} from "../type/Intarface.ts";
 
-const MatchCardPublic = (props: matchesInterface) => {
+const MatchCardPublic = (props: MatchesDataType) => {
 
-    const {matchData}: matchesInterface = props
+    const {matchData} = props
 
     const time:number = matchData.duration ?? 0,
         duration = {
@@ -16,7 +16,7 @@ const MatchCardPublic = (props: matchesInterface) => {
                         sm:grid sm:grid-cols-3">
             <div className="match-card__info flex flex-col items-center
                             sm:items-start">
-                <Link to={`/matches/match/?id=${matchData.match_id ?? ''}`}
+                <Link to={`/matches/match?id=${matchData.match_id ?? ''}`}
                       className='text-blue-200'>{matchData.match_id}</Link>
             </div>
             <div className="match-card__duration flex items-center justify-center my-2">

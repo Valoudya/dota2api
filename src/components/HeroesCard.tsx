@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
-import {heroesInterface} from "../interfaces/Intarface.ts";
+import {HeroDataType} from "../type/Intarface.ts";
 
-const HeroesCard = (props: heroesInterface) => {
+const HeroesCard = (props: HeroDataType) => {
 
-    const {heroData}: heroesInterface = props
+    const {heroData} = props
 
     const link = 'https://api.opendota.com'
 

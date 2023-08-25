@@ -1,8 +1,12 @@
-import {heroesInterface} from "../interfaces/Intarface.ts";
+import {HeroDataType} from "../type/Intarface.ts";
 
-const HeroPageCard = (props: heroesInterface) => {
+const HeroPageCard = (props: HeroDataType) => {
 
-    const {heroData}: heroesInterface = props
+    const {heroData} = props
+
+    if (!heroData) {
+        return <>Failed Hero id</>
+    }
 
     return (
         <div className="hero-card">
@@ -12,8 +16,9 @@ const HeroPageCard = (props: heroesInterface) => {
                      className="rounded-[10px] w-[260px] h-[140px]"/>
                 <div className="hero-main-stats ml-3 flex flex-col justify-center">
                     <h3 className='text-[32px]'>{heroData.localized_name}</h3>
-                    <p>{heroData.attack_type} - {heroData.roles?.map(role => <span
-                        className="text-gray-400">{role} </span>)}</p>
+                    <p>{heroData.attack_type} - {heroData.roles?.map((role, key) => <span
+                        className="text-gray-400"
+                        key={key}>{role} </span>)}</p>
                     <div className="attributes flex space-x-3">
                         <div className="flex items-center">
                             <div className="w-[10px] h-[10px] rounded-full bg-[#f44336]"></div>

@@ -1,22 +1,21 @@
 import {useEffect, useState} from 'react';
-import {useAxiosGet} from "../hooks/axiosGet.tsx";
-import MatchCardPro from "../components/MatchCardPro.tsx";
-import MatchCardPublic from "../components/MatchCardPublic.tsx";
+import MatchesPro from "../components/MatchesPro.tsx";
 import {Link} from "react-router-dom";
-import Loading from "../components/Loading.tsx";
+import {useDispatch} from "react-redux";
+import {fetchPublicMatches} from "../store/action-creators/publicMatches.ts";
+import {fetchProMatches} from "../store/action-creators/proMatches.ts";
+import MatchesPublic from "../components/MatchesPublic.tsx";
 
 const Matches = () => {
 
-    const proMatches = 'https://api.opendota.com/api/proMatches'
-    const publicMatches = 'https://api.opendota.com/api/publicMatches'
+    const dispatch = useDispatch()
     const [isProMatches, setIsProMatches] = useState(true)
-    const {axiosData, loaded, getAxiosData} = useAxiosGet(isProMatches ? proMatches : publicMatches)
-
     const [searchingMatch, setSearchingMatch] = useState(0)
 
     useEffect(() => {
-        getAxiosData()
-    }, [isProMatches])
+        dispatch(fetchPublicMatches())
+        dispatch(fetchProMatches())
+    }, [])
 
     return (
         <div className="content w-screen flex items-center flex-col min-h-[100vh]">
@@ -26,7 +25,7 @@ const Matches = () => {
                     <input type="text"
                            className="flex items-center pl-5 py-2 bg-[#202020] outline-none rounded-full"
                            placeholder="Search match"
-                           onChange={e => setSearchingMatch(e.currentTarget.value - 0)}/>
+                           onChange={(e: any) => setSearchingMatch(e.currentTarget.value - 0)}/>
                     <Link to={`/matches/match?id=${searchingMatch}`}
                         className="bg-[#303030] p-3 justify-center items-center flex rounded-full ml-[-35px]">
                         <img src="../../public/search-interface-symbol.png"
@@ -42,9 +41,7 @@ const Matches = () => {
                             onClick={() => setIsProMatches(false)}>Public Matches
                     </button>
                 </div>
-                {loaded ? '' : <Loading/>}
-                {loaded && isProMatches ? axiosData.map((match, key) => <MatchCardPro matchData={match} key={key}/>) : ''}
-                {loaded && !isProMatches ? axiosData.map((match, key) => <MatchCardPublic matchData={match} key={key}/>) : ''}
+                {isProMatches ? <MatchesPro/> : <MatchesPublic/>}
             </div>
         </div>
     );

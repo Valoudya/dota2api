@@ -1,52 +1,60 @@
-import {useAxiosGet} from "../hooks/axiosGet.tsx";
+import {useState} from "react";
 import HeroPageCard from "../components/HeroPageCard.tsx";
 import NextPrevHero from "../components/NextPrevHero.tsx";
-import {useState} from "react";
 import HeroPageStats from "../components/HeroPageStats.tsx";
 import Loading from "../components/Loading.tsx";
+import {useTypedSelector} from "../hooks/useTypedSelector.ts";
 
-let heroId
 const HeroPage = () => {
-    // @ts-ignore
-    heroId = Object.fromEntries(new URL(document.location).searchParams).id
-    const link = `https://api.opendota.com/api/heroStats`
-    const { axiosData, loaded } = useAxiosGet(link)
-    const [currentPage, setCurrentPage] = useState(heroId)
+    const {heroes, loading, error} = useTypedSelector(state => state.heroes)
+    const heroId:string = Object.fromEntries(new URL(document.location).searchParams).id
+    const [currentPage, setCurrentPage] = useState(Number(heroId))
 
-    const pageChanger = (newHeroId:number) => {
+    if (loading) {
+        return <div className="content w-screen flex justify-center min-h-[100vh]">
+            <div className="view heroes flex flex-col w-[1600px] max-w-[90%]">
+                <Loading/>
+            </div>
+        </div>
+    }
+
+    if (error) {
+        return <h2>Can't load Hero information</h2>
+    }
+
+    const pageChanger = (newHeroId:number)  => {
         setCurrentPage(newHeroId)
     }
 
     const getPrevHeroId = () => {
-        // @ts-ignore
-        if (((axiosData.indexOf(axiosData.find(item => item.id == currentPage))) - 1 < 0)) {
-            return axiosData.length - 1
+        const prevHero = heroes.find(item => item.id == currentPage)
+
+        if (heroes.indexOf(prevHero) - 1 < 0) {
+            return heroes.length - 1
         }
-        // @ts-ignore
-        return (axiosData.indexOf(axiosData.find(item => item.id == currentPage))) - 1
+        return (heroes.indexOf(prevHero)) - 1
     }
 
     const getNextHeroId = () => {
-        // @ts-ignore
-        if (((axiosData.indexOf(axiosData.find(item => item.id == currentPage))) + 1 >= axiosData.length)) {
+        const nextHero = heroes.find(item => item.id == currentPage)
+
+        if (heroes.indexOf(nextHero) + 1 >= heroes.length) {
             return 0
         }
-        // @ts-ignore
-        return (axiosData.indexOf(axiosData.find(item => item.id == currentPage))) + 1
+        return (heroes.indexOf(nextHero)) + 1
     }
 
     return (
         <div className="content w-screen flex justify-center">
             <div className="hero view flex w-[1600px] max-w-[90%] mt-5 flex-col">
-                {loaded ? <HeroPageCard heroData={(axiosData.find(item => item.id == currentPage))}/> : <Loading/>}
-                {loaded ? <HeroPageStats heroData={(axiosData.find(item => item.id == currentPage))}/> : ''}
-                {loaded ? <NextPrevHero heroesData={axiosData}
-                                        heroId={heroId}
-                                        heroData={(axiosData.find(item => item.id == currentPage))}
-                                        prevHeroId={getPrevHeroId()}
-                                        nextHeroId={getNextHeroId()}
-                                        pageChanger={pageChanger}
-                /> : ''}
+                    <HeroPageCard heroData={heroes.find(item => item.id == currentPage)}/>
+                    <HeroPageStats heroData={(heroes.find(item => item.id == currentPage))}/>
+                    <NextPrevHero heroesData={heroes}
+                                  heroId={heroId}
+                                  heroData={(heroes.find(item => item.id == currentPage))}
+                                  prevHeroId={getPrevHeroId()}
+                                  nextHeroId={getNextHeroId()}
+                                  pageChanger={pageChanger}/>
             </div>
         </div>
     );
