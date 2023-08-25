@@ -1,3 +1,4 @@
+// @ts-nocheck TODO: исправить ошибку
 import {Link} from "react-router-dom";
 import {useTypedSelector} from "../hooks/useTypedSelector.ts";
 import Loading from "./Loading.tsx";

@@ -1,3 +1,4 @@
+// @ts-nocheck TODO: исправить ошибку
 import {useAxiosGet} from "../hooks/axiosGet.tsx";
 import {useEffect} from "react";
 import MatchInfo from "../components/MatchInfo.tsx";

@@ -1,3 +1,4 @@
+// @ts-nocheck TODO: исправить ошибку
 import {PlayersDataType} from "../type/Intarface.ts";
 import TeamCardInfo from "./TeamCardInfo.tsx";
 

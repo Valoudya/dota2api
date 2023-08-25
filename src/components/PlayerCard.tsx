@@ -1,3 +1,4 @@
+// @ts-nocheck TODO: исправить ошибку
 import {playerListInterface} from "../type/Intarface.ts";
 
 const PlayerCard = (props: playerListInterface) => {

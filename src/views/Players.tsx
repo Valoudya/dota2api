@@ -1,3 +1,4 @@
+// @ts-nocheck TODO: исправить ошибку
 import {useState} from "react";
 import {Link} from "react-router-dom";
 

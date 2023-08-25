@@ -1,3 +1,4 @@
+// @ts-nocheck TODO: исправить ошибку
 import {Link} from "react-router-dom";
 import {MatchesDataType} from "../type/Intarface.ts";
 

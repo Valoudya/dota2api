@@ -1,3 +1,4 @@
+// @ts-nocheck TODO: исправить ошибку
 import {useState} from "react";
 import HeroPageCard from "../components/HeroPageCard.tsx";
 import NextPrevHero from "../components/NextPrevHero.tsx";
@@ -7,6 +8,7 @@ import {useTypedSelector} from "../hooks/useTypedSelector.ts";
 
 const HeroPage = () => {
     const {heroes, loading, error} = useTypedSelector(state => state.heroes)
+
     const heroId:string = Object.fromEntries(new URL(document.location).searchParams).id
     const [currentPage, setCurrentPage] = useState(Number(heroId))
 

@@ -30,16 +30,18 @@ export interface heroesInterface {
     cm_enabled?: number;
 }
 
-export type HeroDataType = { heroData: heroesInterface }
-
 export interface matchesInterface {
     match_id?: number;
     league_name?: string;
-    radiant_team?: string;
+    radiant_team?: {
+        name: string
+    };
     radiant_win?: string;
     radiant_name?: string;
     radiant_score?: number;
-    dire_team?: string;
+    dire_team?: {
+        name: string
+    };
     dire_name?: string;
     dire_score?: number;
     dire_team_id?: number | undefined;
@@ -52,8 +54,6 @@ export interface matchesInterface {
         }
     ]
 }
-
-export type MatchesDataType = { matchData: matchesInterface }
 
 export interface playerListInterface {
     account_id?: number;
@@ -94,11 +94,8 @@ export interface playerDataInterface {
         is_subscriber?: boolean;
     }
 }
+export type HeroDataType = { heroData: heroesInterface }
+export type MatchesDataType = { matchData: matchesInterface }
+export type PlayersListType = { playersData: playerListInterface[] }
 
-export type PlayersListType = {
-    playersData: playerListInterface[]
-}
-
-export type PlayersDataType = {
-    playersData: playerDataInterface[]
-}
+export type PlayersDataType = { playersData: playerDataInterface[] }
