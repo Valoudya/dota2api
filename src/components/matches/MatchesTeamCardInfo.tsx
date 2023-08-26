@@ -1,10 +1,10 @@
 // @ts-nocheck TODO: исправить ошибку
 import {Link} from "react-router-dom";
-import {useTypedSelector} from "../hooks/useTypedSelector.ts";
-import Loading from "./Loading.tsx";
-import {PlayersListType} from "../type/Intarface.ts";
+import {useTypedSelector} from "../../hooks/useTypedSelector.ts";
+import Loading from "../Loading.tsx";
+import {PlayersListType} from "../../type/playersDataInterface.ts";
 
-const TeamCardInfo = (props: PlayersListType) => {
+const MatchesTeamCardInfo = (props: PlayersListType) => {
     const {heroes, loading, error} = useTypedSelector(state => state.heroes)
     const {playersData}: PlayersListType = props
 
@@ -71,4 +71,4 @@ const TeamCardInfo = (props: PlayersListType) => {
     );
 };
 
-export default TeamCardInfo;
+export default MatchesTeamCardInfo;

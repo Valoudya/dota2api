@@ -1,14 +1,11 @@
 // @ts-nocheck TODO: исправить ошибку
-import {playerListInterface} from "../type/Intarface.ts";
 
-const PlayerCard = (props: playerListInterface) => {
-    const {playerData}:playerListInterface = props
-    const url = `https://api.opendota.com/api/players/${playerData.account_id}`
+const PlayerCard = () => {
 
     return (
-        <>
+        <div className="player__card">
 
-        </>
+        </div>
     );
 };
 

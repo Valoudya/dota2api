@@ -16,6 +16,7 @@ const Header = () => {
                     <Link to="/heroes" className='p-1'>Heroes</Link>
                     <Link to="/matches" className='p-1'>Matches</Link>
                     <Link to="/players" className='p-1'>Players</Link>
+                    <Link to="/teams" className='p-1'>Teams</Link>
                 </div>
             </div>
         </header>

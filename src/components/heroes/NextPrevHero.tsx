@@ -1,6 +1,6 @@
 // @ts-nocheck TODO: исправить ошибку
 import {Link} from "react-router-dom";
-import {heroesInterface} from "../type/Intarface.ts";
+import {heroesInterface} from "../../type/playersDataInterface.ts";
 
 export interface NextPrevInterface {
     props: any;

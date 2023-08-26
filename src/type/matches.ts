@@ -1,4 +1,4 @@
-import {matchesInterface} from "./Intarface.ts";
+import {matchesInterface} from "./playersDataInterface.ts";
 
 export interface MatchesState {
     matches: matchesInterface[];

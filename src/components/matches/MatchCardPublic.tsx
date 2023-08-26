@@ -1,6 +1,6 @@
 // @ts-nocheck TODO: исправить ошибку
 import {Link} from "react-router-dom";
-import {MatchesDataType} from "../type/Intarface.ts";
+import {MatchesDataType} from "../../type/playersDataInterface.ts";
 
 const MatchCardPublic = (props: MatchesDataType) => {
 

@@ -1,8 +1,8 @@
 // @ts-nocheck TODO: исправить ошибку
 import {useState} from "react";
-import HeroPageCard from "../components/HeroPageCard.tsx";
-import NextPrevHero from "../components/NextPrevHero.tsx";
-import HeroPageStats from "../components/HeroPageStats.tsx";
+import HeroPageCard from "../components/heroes/HeroPageCard.tsx";
+import NextPrevHero from "../components/heroes/NextPrevHero.tsx";
+import HeroPageStats from "../components/heroes/HeroPageStats.tsx";
 import Loading from "../components/Loading.tsx";
 import {useTypedSelector} from "../hooks/useTypedSelector.ts";
 

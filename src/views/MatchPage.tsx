@@ -1,9 +1,9 @@
 // @ts-nocheck TODO: исправить ошибку
 import {useAxiosGet} from "../hooks/axiosGet.tsx";
 import {useEffect} from "react";
-import MatchInfo from "../components/MatchInfo.tsx";
+import MatchInfo from "../components/matches/MatchInfo.tsx";
 import Loading from "../components/Loading.tsx";
-import TeamCard from "../components/TeamCard.tsx";
+import MatchesTeamCard from "../components/matches/MatchesTeamCard.tsx";
 
 const MatchPage = () => {
 
@@ -24,7 +24,7 @@ const MatchPage = () => {
                 <div className="view matches flex flex-col space-y-2 w-[1600px] max-w-[90%] mt-5">
                     <h2 className='text-[42px]'>Match: {axiosData.match_id}</h2>
                     <MatchInfo matchData={axiosData}/>
-                    <TeamCard playersData={axiosData.players}/>
+                    <MatchesTeamCard playersData={axiosData.players}/>
                 </div> : <Loading/>}
         </div>
     );

@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {MatchesDataType} from "../type/Intarface.ts";
+import {MatchesDataType} from "../../type/playersDataInterface.ts";
 
 const MatchCardPro = (props: MatchesDataType) => {
 

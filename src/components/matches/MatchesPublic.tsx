@@ -1,5 +1,5 @@
-import {useTypedSelector} from "../hooks/useTypedSelector.ts";
-import Loading from "./Loading.tsx";
+import {useTypedSelector} from "../../hooks/useTypedSelector.ts";
+import Loading from "../Loading.tsx";
 import MatchCardPublic from "./MatchCardPublic.tsx";
 
 const MatchesPublic = () => {

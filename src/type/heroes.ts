@@ -1,4 +1,4 @@
-import {heroesInterface} from "./Intarface.ts";
+import {heroesInterface} from "./playersDataInterface.ts";
 
 export type HeroesType = heroesInterface[]
 

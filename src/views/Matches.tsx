@@ -1,11 +1,11 @@
 // @ts-nocheck TODO: исправить ошибку
 import {useEffect, useState} from 'react';
-import MatchesPro from "../components/MatchesPro.tsx";
+import MatchesPro from "../components/matches/MatchesPro.tsx";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {fetchPublicMatches} from "../store/action-creators/publicMatches.ts";
 import {fetchProMatches} from "../store/action-creators/proMatches.ts";
-import MatchesPublic from "../components/MatchesPublic.tsx";
+import MatchesPublic from "../components/matches/MatchesPublic.tsx";
 
 const Matches = () => {
 

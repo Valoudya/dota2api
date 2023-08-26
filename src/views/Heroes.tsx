@@ -1,4 +1,4 @@
-import HeroesCard from "../components/HeroesCard.tsx";
+import HeroesCard from "../components/heroes/HeroesCard.tsx";
 import {useState} from "react";
 import Loading from "../components/Loading.tsx";
 import {useTypedSelector} from "../hooks/useTypedSelector.ts";

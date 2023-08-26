@@ -1,4 +1,3 @@
-// @ts-nocheck TODO: исправить ошибку
 import {useState} from "react";
 import {Link} from "react-router-dom";
 
@@ -8,8 +7,8 @@ const Players = () => {
 
     return (
         <div className="content w-screen flex justify-center flex-col items-center">
-            <div className="view player flex flex-col w-[1600px] space-y-2 max-w-[90%]">
-                <div className="player_panel mt-5">
+            <div className="view player flex flex-col w-[1600px] max-w-[90%]">
+                <div className="player_panel mt-5 space-y-2">
                     <h2 className='text-[42px]'>Players</h2>
                     <div className="search-player-container flex">
                         <input type="text"
