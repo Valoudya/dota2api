@@ -15,11 +15,7 @@ const Heroes = () => {
     }
 
     if (loading) {
-        return <div className="content w-screen flex justify-center min-h-[100vh]">
-            <div className="view heroes flex flex-col w-[1600px] max-w-[90%]">
-                <Loading/>
-            </div>
-        </div>
+        return <div className="flex w-full h-[90vh] justify-center items-center"><Loading/></div>
     }
 
     if (error) {

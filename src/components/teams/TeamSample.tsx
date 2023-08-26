@@ -3,7 +3,7 @@ const TeamSample = () => {
         <div className="team-card max-w-[1200px] min-w-[100%] border-2 border-[#202020]
                         hidden md:grid grid-cols-1
                         md:grid-cols-4 items-center
-                        p-3 space-y-2">
+                        pl-2 space-y-2 md:space-y-0">
             <div className="team-card__logo w-[50px] h-[50px] flex items-center">
                 <span>Logo</span>
             </div>

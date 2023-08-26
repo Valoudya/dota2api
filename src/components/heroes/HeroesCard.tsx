@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {HeroDataType} from "../../type/playersDataInterface.ts";
+import {HeroDataType} from "../../type/heroesDataInterface.ts";
 
 const HeroesCard = (props: HeroDataType) => {
 

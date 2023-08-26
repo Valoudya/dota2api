@@ -1,8 +1,9 @@
-import {useFetchTeams} from "../utilits/fetchTeams.ts";
+import {useFetchTeams} from "../hooks/fetchTeams.ts";
 import {useEffect, useState} from "react";
 import Loading from "../components/Loading.tsx";
 import TeamCard from "../components/teams/TeamCard.tsx";
 import TeamSample from "../components/teams/TeamSample.tsx";
+import SearchPanel from "../components/SearchPanel.tsx";
 
 const Teams = () => {
 
@@ -21,11 +22,7 @@ const Teams = () => {
     }
 
     if (!teamsLoaded) {
-        return <div className="content w-screen flex justify-center min-h-[100vh]">
-            <div className="view heroes flex flex-col w-[1600px] max-w-[90%]">
-                <Loading/>
-            </div>
-        </div>
+        return <div className="flex w-full h-[90vh] justify-center items-center"><Loading/></div>
     }
 
     if (error) {
@@ -41,6 +38,7 @@ const Teams = () => {
             <div className="teams view flex flex-col w-[1600px] max-w-[90%] items-center">
                 <div className="teams-container w-[100%] space-y-2">
                     <h2 className='text-[42px] mt-5 text-start'>Teams</h2>
+                    <SearchPanel route="teams/team" placeholder={'Search team'}/>
                     <TeamSample/>
                     {teamsPagination(currentPage).map((team, key) => <TeamCard team={team} key={key}/>)}
                 </div>

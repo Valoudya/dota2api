@@ -1,4 +1,4 @@
-import {MatchesDataType} from "../../type/playersDataInterface.ts";
+import {MatchesDataType} from "../../type/matchesDataInterface.ts";
 
 const MatchInfo = (props: MatchesDataType) => {
 

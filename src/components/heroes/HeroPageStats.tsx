@@ -1,4 +1,4 @@
-import {HeroDataType} from "../../type/playersDataInterface.ts";
+import {HeroDataType} from "../../type/heroesDataInterface.ts";
 
 const HeroPageStats = (props: HeroDataType) => {
     const {heroData} = props

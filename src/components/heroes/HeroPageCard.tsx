@@ -1,4 +1,4 @@
-import {HeroDataType} from "../../type/playersDataInterface.ts";
+import {HeroDataType} from "../../type/heroesDataInterface.ts";
 
 const HeroPageCard = (props: HeroDataType) => {
 
