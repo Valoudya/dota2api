@@ -9,8 +9,9 @@ interface SearchPanelProps {
     placeholder: string,
     route: string
 }
-//TODO: переработать пропс роутов
+
 const SearchPanel = (props: SearchPanelProps) => {
+    const currentPathname = location.pathname
     const {placeholder, route} = props
     const initialState:SearchType = {searchItem: 0}
 
@@ -26,7 +27,7 @@ const SearchPanel = (props: SearchPanelProps) => {
                    className="flex items-center pl-5 py-2 bg-[#202020] outline-none rounded-full"
                    placeholder={`${placeholder} (id)`}
                    onChange={e => searchHandler({searchItem: Number(e.currentTarget.value)})}/>
-            <Link to={`/${route}?id=${searchingItem.searchItem}`}
+            <Link to={`${currentPathname}/${route}?id=${searchingItem.searchItem}`}
                   className="bg-[#303030] p-3 justify-center items-center flex rounded-full ml-[-35px]">
                 <img src="../../public/search-interface-symbol.png"
                      alt=""

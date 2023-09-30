@@ -52,7 +52,7 @@ const MatchesTeamCardInfo = (props: PlayersListType) => {
                                 className="w-[32px] h-[32px]"
                             />
                             <Link className="md:ml-3"
-                                  to={`/players/player?id=${player.account_id}`}>{player.personaname}</Link>
+                                  to={`/players/player?id=${player.account_id}`}>{player.personaname ?? "Player"}</Link>
                         </div>
                         <div className="player-kdar grid grid-cols-3 justify-items-center">
                             <span className="text-[#66bb6a]"><span className="md:hidden">Kills: </span>{player.kills}</span>

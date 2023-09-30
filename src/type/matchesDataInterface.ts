@@ -1,4 +1,5 @@
 export interface matchesInterface {
+    start_time? : number;
     match_id?: number;
     league_name?: string;
     radiant_team?: {

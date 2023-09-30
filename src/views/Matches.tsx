@@ -7,6 +7,7 @@ import {fetchPublicMatches} from "../store/action-creators/publicMatches.ts";
 import {fetchProMatches} from "../store/action-creators/proMatches.ts";
 import MatchesPublic from "../components/matches/MatchesPublic.tsx";
 import SearchPanel from "../components/SearchPanel.tsx";
+import MatchesCardSample from "../components/matches/MatchesCardSample.tsx";
 
 const Matches = () => {
 
@@ -22,7 +23,7 @@ const Matches = () => {
         <div className="content w-screen flex items-center flex-col min-h-[100vh]">
             <div className="view matches flex flex-col w-[1600px] space-y-2 max-w-[90%] mt-5">
                 <h2 className='text-[42px]'>Matches</h2>
-                <SearchPanel route="matches/match" placeholder="Search match"/>
+                <SearchPanel route="match" placeholder="Search match"/>
                 <div className="category-changer flex w-[100%] justify-start space-x-2 items-start">
                     <button className={`py-1 px-2 ${isProMatches && 'border-b-2'}`}
                             onClick={() => setIsProMatches(true)}>Pro Matches
@@ -31,6 +32,7 @@ const Matches = () => {
                             onClick={() => setIsProMatches(false)}>Public Matches
                     </button>
                 </div>
+                <MatchesCardSample/>
                 {isProMatches ? <MatchesPro/> : <MatchesPublic/>}
             </div>
         </div>

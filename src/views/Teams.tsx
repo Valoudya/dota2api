@@ -4,6 +4,7 @@ import Loading from "../components/Loading.tsx";
 import TeamCard from "../components/teams/TeamCard.tsx";
 import TeamSample from "../components/teams/TeamSample.tsx";
 import SearchPanel from "../components/SearchPanel.tsx";
+import {scrollUp} from "../utilits/scrollUp.ts";
 
 const Teams = () => {
 
@@ -30,6 +31,7 @@ const Teams = () => {
     }
 
     const pageQuantity = () => {
+        scrollUp()
         return [...Array(teams.length / 50).keys()]
     }
 
@@ -38,15 +40,19 @@ const Teams = () => {
             <div className="teams view flex flex-col w-[1600px] max-w-[90%] items-center">
                 <div className="teams-container w-[100%] space-y-2">
                     <h2 className='text-[42px] mt-5 text-start'>Teams</h2>
-                    <SearchPanel route="teams/team" placeholder={'Search team'}/>
+                    <SearchPanel route="team" placeholder={'Search team'}/>
                     <TeamSample/>
                     {teamsPagination(currentPage).map((team, key) => <TeamCard team={team} key={key}/>)}
                 </div>
                 <div className="paginationr mt-5">
+                    <button onClick={() => changePage(currentPage - 1)}
+                            className={`px-2 ${currentPage == 0 ? 'hidden' : ''}`}>{'<'}</button>
                     {pageQuantity().map((page, key) =>
                         <button onClick={() => changePage(page)}
                                 key={key}
                                 className={`px-2 ${page == currentPage ? 'text-blue-300' : ''}`}>{page + 1}</button>)}
+                    <button onClick={() => changePage(currentPage + 1)}
+                            className={`px-2 ${currentPage == pageQuantity().length - 1 ? 'hidden' : ''}`}>{'>'}</button>
                 </div>
             </div>
         </div>
